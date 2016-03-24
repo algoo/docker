@@ -1,6 +1,14 @@
 FROM java:8-jdk
 
-RUN apt-get update && apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update &&\
+  apt-get install -y wget git curl zip python3 python3-dev \
+    realpath libpq-dev python-pip build-essential \
+    postgresql-server-dev-all postgresql postgresql-client \
+    libxml2-dev libxslt1-dev \
+    python-lxml sudo libffi-dev && \
+rm -rf /var/lib/apt/lists/*
+
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL\n" >> /etc/sudoers
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000

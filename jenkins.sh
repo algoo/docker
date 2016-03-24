@@ -2,6 +2,11 @@
 
 set -e
 
+# Bastien add
+echo 'ALGOO: START POSTGRSQL'
+sudo /etc/init.d/postgresql start
+sudo -u postgres -H sh -c "psql -c \"ALTER USER postgres WITH PASSWORD 'dummy';\""; echo
+
 # Copy files from /usr/share/jenkins/ref into $JENKINS_HOME
 # So the initial JENKINS-HOME is set with expected content.
 # Don't override, as this is just a reference setup, and use from UI
