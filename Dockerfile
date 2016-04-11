@@ -5,7 +5,7 @@ RUN apt-get update &&\
     realpath libpq-dev python-pip build-essential \
     postgresql-server-dev-all postgresql postgresql-client \
     libxml2-dev libxslt1-dev \
-    python-lxml sudo libffi-dev && \
+    python-lxml sudo libffi-dev libjpeg-dev && \
 rm -rf /var/lib/apt/lists/*
 
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL\n" >> /etc/sudoers
