@@ -5,7 +5,9 @@ set -e
 # Bastien add
 echo 'ALGOO: START POSTGRSQL'
 sudo /etc/init.d/postgresql start
-sudo -u postgres -H sh -c "psql -c \"ALTER USER postgres WITH PASSWORD 'dummy';\""; echo
+sudo -u postgres -H sh -c "psql -c \"ALTER USER postgres WITH PASSWORD 'dummy';\""
+sudo -u postgres -H sh -c "psql -c \"update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'template0';\""
+sudo -u postgres -H sh -c "psql -c \"update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'template1';\""
 
 # Copy files from /usr/share/jenkins/ref into $JENKINS_HOME
 # So the initial JENKINS-HOME is set with expected content.
